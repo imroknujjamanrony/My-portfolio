@@ -10,6 +10,7 @@ import "./index.css";
 import { Contact } from "./components/sections/Contact";
 import SocialLinks from "./components/sections/SocialLinks";
 import { Skills } from "./components/sections/Skills";
+import EducationSection from "./components/sections/EducationSection";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -26,11 +27,12 @@ function App() {
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <Home />
-        <div className="flex justify-center items-center text-center ">
+        <div className="flex justify-center pb-6 items-center text-center ">
           <SocialLinks></SocialLinks>
         </div>
         <About />
         <Skills></Skills>
+        <EducationSection></EducationSection>
         <Projects />
         <Contact />
       </div>
