@@ -81,22 +81,16 @@ export const About = () => {
               💻 Technical Skills
             </h3>
             <div className="flex flex-wrap justify-center gap-4">
-              {[
-                "React",
-                "Vue",
-                "TypeScript",
-                "TailwindCSS",
-                "Node.js",
-                "MongoDB",
-                "GraphQL",
-              ].map((skill, index) => (
-                <span
-                  key={index}
-                  className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 transition"
-                >
-                  {skill}
-                </span>
-              ))}
+              {["React", "TailwindCSS", "Node.js", "MongoDB"].map(
+                (skill, index) => (
+                  <span
+                    key={index}
+                    className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 transition"
+                  >
+                    {skill}
+                  </span>
+                )
+              )}
             </div>
           </motion.div>
         </div>

@@ -9,6 +9,7 @@ import { Projects } from "./components/sections/Projects";
 import "./index.css";
 import { Contact } from "./components/sections/Contact";
 import SocialLinks from "./components/sections/SocialLinks";
+import { Skills } from "./components/sections/Skills";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -29,6 +30,7 @@ function App() {
           <SocialLinks></SocialLinks>
         </div>
         <About />
+        <Skills></Skills>
         <Projects />
         <Contact />
       </div>
