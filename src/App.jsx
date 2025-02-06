@@ -11,6 +11,7 @@ import { Contact } from "./components/sections/Contact";
 import SocialLinks from "./components/sections/SocialLinks";
 import { Skills } from "./components/sections/Skills";
 import EducationSection from "./components/sections/EducationSection";
+import Footer from "./components/Footer";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -35,6 +36,7 @@ function App() {
         <EducationSection></EducationSection>
         <Projects />
         <Contact />
+        <Footer />
       </div>
     </>
   );
