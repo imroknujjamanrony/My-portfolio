@@ -37,14 +37,14 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
               About{" "}
             </a>
             <a
-              href="#about"
+              href="#skills"
               className="text-gray-300 hove:text-white transition-colors"
             >
               {" "}
               Skill{" "}
             </a>
             <a
-              href="#about"
+              href="#education"
               className="text-gray-300 hove:text-white transition-colors"
             >
               {" "}
@@ -64,6 +64,7 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
               {" "}
               Contact{" "}
             </a>
+            <button className="bg-amber-500 rounded-2xl p-1">Resume</button>
           </div>
         </div>
       </div>
