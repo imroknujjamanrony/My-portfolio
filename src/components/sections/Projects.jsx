@@ -1,29 +1,31 @@
+"use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaExternalLinkAlt, FaGithub, FaTimes } from "react-icons/fa";
 
 const projectData = [
   {
-    name: "CrowedCube Fundraising",
-    image: "https://i.ibb.co.com/sdM3KPCN/crouwcube.png",
+    name: "JobHive",
+    image: "https://i.ibb.co.com/gZmrQ3hB/Screenshot-20250505-135740.png",
     techStack: [
-      "React",
-      "Firebase Auth",
+      "Next.js",
+      "NextAuth.js",
       "Tailwind CSS",
       "Daisy UI",
-      "React Router",
+      "MongoDB",
       "Context API",
       "Node.js",
       "Express.js",
-      "MongoDB",
+      "socket.io",
     ],
-    description: "A crowdfunding platform for fundraising campaigns.",
-    liveLink: "https://crowdcube-fundraising.web.app/",
+    description:
+      "A Hiring Agency & Communication Platform connects job seekers, employers, freelancers, and recruiters in various industries.",
+    liveLink: "https://jobhive-agency.vercel.app/",
     githubLink:
-      "https://github.com/imroknujjamanrony/crowdcube-fundraising/tree/main/crowdcube-fundraising",
+      "https://github.com/alaminislam34/Hiring-Agency-Communication-Platform",
     challenges: [
-      "Ensuring secure transactions",
-      "Managing real-time campaign updates",
+      "Ensuring real-time communication between users",
+      "Implementing a robust authentication system",
     ],
     improvements: [
       "Adding a more intuitive UI",
@@ -82,57 +84,74 @@ export const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   return (
-    <section id="projects" className="bg-gray-900 text-white py-12">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-10">Projects</h2>
+    <section
+      id="projects"
+      className="bg-gradient-to-b from-gray-950 via-gray-900 to-black text-white py-16 px-6"
+    >
+      <div className="max-w-7xl mx-auto">
+        <motion.h2
+          className="text-4xl font-extrabold text-center mb-14 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Projects
+        </motion.h2>
+
         <motion.div
-          className="grid md:grid-cols-3 gap-8"
+          className="grid gap-10 md:grid-cols-3"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
           {projectData.map((project, index) => (
             <motion.div
               key={index}
-              className="bg-gray-800 p-5 rounded-lg shadow-md relative overflow-hidden"
-              whileHover={{ scale: 1.05 }}
+              className="bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl border border-gray-700 transition-transform transform hover:scale-105"
+              whileHover={{ y: -5 }}
               transition={{ type: "spring", stiffness: 100 }}
             >
               <img
                 src={project.image}
                 alt={project.name}
-                className="w-full h-48 object-cover rounded-lg"
+                className="w-full h-48 object-cover"
               />
-              <h3 className="text-2xl font-semibold mt-4">{project.name}</h3>
-              <p className="mt-2 text-gray-300">{project.description}</p>
-              <button
-                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded flex items-center gap-2 hover:bg-blue-600 transition"
-                onClick={() => setSelectedProject(project)}
-              >
-                View More / Details
-              </button>
+              <div className="p-5">
+                <h3 className="text-2xl font-semibold text-blue-400">
+                  {project.name}
+                </h3>
+                <p className="text-gray-300 mt-2 text-sm line-clamp-3">
+                  {project.description}
+                </p>
+                <button
+                  className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center gap-2 transition-all"
+                  onClick={() => setSelectedProject(project)}
+                >
+                  View More / Details
+                </button>
+              </div>
             </motion.div>
           ))}
         </motion.div>
       </div>
 
-      {/* Project Details Modal */}
+      {/* Modal */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
-            className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex justify-center items-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="bg-gray-900 text-white p-6 rounded-lg max-w-lg w-full relative"
+              className="bg-gray-900 p-6 rounded-xl w-full max-w-2xl relative border border-gray-700 shadow-2xl"
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
             >
               <button
-                className="absolute top-2 right-3 text-2xl"
+                className="absolute top-4 right-4 text-gray-400 hover:text-white text-xl"
                 onClick={() => setSelectedProject(null)}
               >
                 <FaTimes />
@@ -140,30 +159,32 @@ export const Projects = () => {
               <img
                 src={selectedProject.image}
                 alt={selectedProject.name}
-                className="w-full h-40 object-cover rounded"
+                className="w-full h-52 object-cover rounded-md mb-4"
               />
-              <h2 className="text-2xl font-bold mt-4">
+              <h2 className="text-2xl font-bold text-blue-400">
                 {selectedProject.name}
               </h2>
-              <p className="mt-2">{selectedProject.description}</p>
-              <p className="mt-2">
+              <p className="text-gray-300 mt-2">
+                {selectedProject.description}
+              </p>
+              <p className="mt-2 text-sm text-gray-400">
                 <strong>Tech Stack:</strong>{" "}
                 {selectedProject.techStack.join(", ")}
               </p>
-              <p className="mt-2">
+              <p className="mt-2 text-sm text-gray-400">
                 <strong>Challenges:</strong>{" "}
                 {selectedProject.challenges.join(", ")}
               </p>
-              <p className="mt-2">
+              <p className="mt-2 text-sm text-gray-400">
                 <strong>Future Improvements:</strong>{" "}
                 {selectedProject.improvements.join(", ")}
               </p>
-              <div className="mt-4 flex justify-between">
+              <div className="mt-5 flex gap-4">
                 <a
                   href={selectedProject.liveLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-blue-500 px-4 py-2 rounded flex items-center gap-2 hover:bg-blue-600"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center gap-2"
                 >
                   Live Demo <FaExternalLinkAlt />
                 </a>
@@ -171,7 +192,7 @@ export const Projects = () => {
                   href={selectedProject.githubLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gray-700 px-4 py-2 rounded flex items-center gap-2 hover:bg-gray-800"
+                  className="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-md flex items-center gap-2"
                 >
                   GitHub <FaGithub />
                 </a>
